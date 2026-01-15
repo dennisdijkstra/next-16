@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,7 +16,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "useUnknownInCatchVariables": false,
     "plugins": [
@@ -22,13 +26,32 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/app/*"],
-      "@/components/*": ["src/app/components/*"],
-      "@/utils/*": ["src/app/utils/*"],
-      "@/api/*": ["src/app/api/*"],
-      "@/store/*": ["src/app/store/*"]
+      "@/*": [
+        "src/app/*"
+      ],
+      "@/components/*": [
+        "src/app/components/*"
+      ],
+      "@/utils/*": [
+        "src/app/utils/*"
+      ],
+      "@/api/*": [
+        "src/app/api/*"
+      ],
+      "@/store/*": [
+        "src/app/store/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "middleware.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "middleware.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
