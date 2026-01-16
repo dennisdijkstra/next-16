@@ -5,7 +5,10 @@ export const cache = async (req: Request, res: Response, next: NextFunction) => 
   const cacheKey = req.originalUrl
 
   try {
-    const response = await redis.get(cacheKey)
+    let response = await redis.get(cacheKey)
+    if (Buffer.isBuffer(response)) {
+      response = Buffer.from(response).toString()
+    }
 
     if (response) {
       res.send(JSON.parse(response))
