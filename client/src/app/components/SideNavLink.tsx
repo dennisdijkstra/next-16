@@ -8,7 +8,7 @@ type SideNavLinkProps = {
   isActive?: boolean
 }
 
-const SideNavLink = ({ title, url, isActive }: SideNavLinkProps) => {
+const SideNavLink = ({ title, url }: SideNavLinkProps) => {
   return (
     <div className="flex justify-center mb-2">
       <Link href={url} className="text-[10px]">
