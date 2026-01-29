@@ -1,4 +1,4 @@
-import { User, Config } from '@/api/types'
+import { User, Config, Options, ApiResponse, Payload } from '@/api/types'
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 let isRefreshing = false
@@ -10,20 +10,14 @@ const config: Config = {
   credentials: 'include',
 }
 
-type Options = {
-  query?: object | undefined
-  data?: object | undefined
-}
+const makeOptions = (method: string, payload?: Payload): Options => {
+  if (!payload) return {}
 
-const makeOptions = (method: string, payload: object | undefined): Options => {
-  const options: Options = {}
   const key = method === 'GET' ? 'query' : 'data'
-
-  options[key] = payload
-  return options
+  return { [key]: payload }
 }
 
-const request = async (method: string, url: string, arg?: object): Promise<{ res?: object, error?: object}> => {
+const request = async <T = unknown>(method: string, url: string, arg?: Payload): Promise<ApiResponse<T>> => {
   const { query, data } = makeOptions(method, arg)
   let resource = `${apiUrl}/${url}`
 
@@ -46,9 +40,9 @@ const request = async (method: string, url: string, arg?: object): Promise<{ res
         const refreshResponse = await request('POST', 'auth/refresh-token')
         isRefreshing = false
 
-        if (! refreshResponse?.res?.ok) {
+        if (!refreshResponse?.res) {
           window.location.href = '/login'
-          return
+          return { error: 'Unauthorized' }
         }
 
         const initialResponse = await fetch(resource, options)
@@ -63,7 +57,7 @@ const request = async (method: string, url: string, arg?: object): Promise<{ res
     const data = await response.json()
     return { res: data }
   } catch (error) {
-    return { error: error.message }
+    return { error: error instanceof Error ? error.message : 'Unknown error' }
   }
 }
 
@@ -83,7 +77,7 @@ export const requestResetPassword = async (url: string, { arg }: { arg: { email:
   return request('POST', url, arg)
 }
 
-export const validateResetPasswordToken = async (args: Array<any>) => {
+export const validateResetPasswordToken = async (args: [string, Payload]) => {
   const [url, arg] = args
   return request('GET', url, arg)
 }
