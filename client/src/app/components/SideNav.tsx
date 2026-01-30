@@ -28,7 +28,7 @@ const SideNav = () => {
       </div>
       <button
         onClick={handleClick}
-        className="absolute flex items-center justify-center top-1/2 -translate-y-1/2 h-7 w-7 bg-gray-900 rounded-full top-0 -right-2.5"
+        className="absolute flex items-center justify-center top-1/2 -translate-y-1/2 h-7 w-7 bg-gray-900 rounded-full -right-2.5"
       >
         <CaretRight size={18} weight="bold" className={isOpen ? 'rotate-180' : ''} />
       </button>

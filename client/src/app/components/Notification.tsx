@@ -84,7 +84,7 @@ const Notification = ({ notification }: NotificationProps) => {
         ref={nodeRef}
         className={classNames(
           'relative mb-2 last:mb-0',
-          'h-16 w-[400px] px-12',
+          'h-16 w-100 px-12',
           'rounded-md text-sm',
           'flex justify-center items-center',
           'translate-x-full',

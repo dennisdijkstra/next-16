@@ -83,7 +83,7 @@ const Page = () => {
               className='w-full'
             />
           </div>
-          {error && <p className="text-sm text-red-600 absolute bottom-[152px]">{capitalize(error)}</p>}
+          {error && <p className="text-sm text-red-600 absolute bottom-38">{capitalize(error)}</p>}
           <Button type='submit' className='w-full mb-4' isDisabled={isLoading}>
             Login
             <ArrowRight size={24} weight="bold" className="ml-1" />

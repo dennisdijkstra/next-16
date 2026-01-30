@@ -53,8 +53,8 @@ export default function Modal({
         <>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 z-10" ref={overlayRef} onClick={onClose} />
           <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-            <div className="relative w-[600px] h-[400px] z-20" ref={modalRef}>
-              <div className="w-full h-full px-10 pt-10 pb-[108px] rounded-md bg-white">
+            <div className="relative w-150 h-100 z-20" ref={modalRef}>
+              <div className="w-full h-full px-10 pt-10 pb-27 rounded-md bg-white">
                 <button className="absolute top-5 right-5" onClick={onClose}>
                   <X size={24} weight="bold" />
                 </button>
