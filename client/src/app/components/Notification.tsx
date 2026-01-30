@@ -9,7 +9,7 @@ import { classNames } from '@/utils/index'
 type Notification = {
   id: string,
   message: string,
-  type: 'success' | 'failure' | 'warning'
+  type: 'success' | 'error' | 'warning'
   hasAutoClose?: boolean,
 }
 
@@ -19,7 +19,7 @@ type NotificationProps = {
 
 type Icons = {
   success: ForwardRefExoticComponent<IconProps>
-  failure: ForwardRefExoticComponent<IconProps>
+  error: ForwardRefExoticComponent<IconProps>
   warning: ForwardRefExoticComponent<IconProps>
 }
 
@@ -31,13 +31,13 @@ const Notification = ({ notification }: NotificationProps) => {
 
   const icons: Icons = {
     success: CheckCircle,
-    failure: XCircle,
+    error: XCircle,
     warning: WarningCircle,
   }
 
   const classes = {
     success: 'bg-green-100',
-    failure: 'bg-red-100',
+    error: 'bg-red-100',
     warning: 'bg-yellow-100',
   }
 
