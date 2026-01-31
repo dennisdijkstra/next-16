@@ -8,7 +8,8 @@ export const getUser: RequestHandler = async (req, res) => {
   const user = await getUserByIdOrEmail({ id: parseInt(id) })
 
   delete user.password
-  redis.set(req.originalUrl, JSON.stringify(user))
+  const cacheKey = `${req.originalUrl}:user:${id}`
+  redis.set(cacheKey, JSON.stringify(user))
 
   res.status(200).json({ ...user })
 }

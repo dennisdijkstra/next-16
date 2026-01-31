@@ -2,7 +2,7 @@ import redis from '@/redisClient.js'
 import { Request, Response, NextFunction } from 'express'
 
 export const cache = async (req: Request, res: Response, next: NextFunction) => {
-  const userId = req.body.user?.id
+  const userId = req.body?.user?.id
   const cacheKey = userId ? `${req.originalUrl}:user:${userId}` : req.originalUrl
 
   try {

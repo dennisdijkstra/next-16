@@ -10,6 +10,9 @@ export const authorize = (req: Request, res: Response, next: NextFunction) => {
 
   try {
     const decoded = jwt.verify(accessToken, process.env.JWT_ACCESS_TOKEN_SECRET)
+    if (!req.body) {
+      req.body = {}
+    }
     req.body.user = decoded
 
     next()
