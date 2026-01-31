@@ -92,7 +92,6 @@ export const requestResetPassword = async (req: Request, res: Response) => {
     return res.json({ status: 'ok' })
   }
 
-  // Expire older tokens
   await prisma.resetToken.updateMany({
     where: {
       email: user.email,
@@ -127,7 +126,6 @@ export const requestResetPassword = async (req: Request, res: Response) => {
 }
 
 export const validateResetPassword = async (req: Request, res: Response) => {
-  // Delete all expired tokens
   await prisma.resetToken.deleteMany({
     where: {
       expiresAt: {
