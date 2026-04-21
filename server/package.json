@@ -1,5 +1,6 @@
 {
-  "name": "y",
+  "name": "node-server",
+  "packageManager": "pnpm@9.12.1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

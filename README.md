@@ -23,8 +23,8 @@ Modern fullstack app with a Next.js frontend and an Express + Prisma backend.
 1. Install dependencies:
 
 ```bash
-cd client && npm install
-cd ../server && npm install
+cd client && pnpm install
+cd ../server && pnpm install
 ```
 
 2. Create environment files:
@@ -45,17 +45,17 @@ cd ../server && npm install
 3. Apply database migrations from `server/`:
 
 ```bash
-npx prisma migrate dev
+pnpm exec prisma migrate dev
 ```
 
 4. Run both apps in separate terminals:
 
 ```bash
 # terminal 1
-cd client && npm run dev
+cd client && pnpm dev
 
 # terminal 2
-cd server && npm run dev
+cd server && pnpm dev
 ```
 
 - Frontend: `http://localhost:3000`
@@ -63,6 +63,6 @@ cd server && npm run dev
 
 ## Development
 
-- Run `npm run lint` in `client/` and `server/`.
+- Run `pnpm lint` in `client/` and `server/`.
 - Re-run Prisma migrations after schema changes.
-- Regenerate build output in `server/` with `npm run build` when needed.
+- Regenerate build output in `server/` with `pnpm build` when needed.
